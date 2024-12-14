@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💼💵Adult Income Prediction</title>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #5f6368;
+            margin-top: 30px;
+            font-size: 2.5em;
+        }
+
+        form {
+            background-color: #ffffff;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center; /* Align labels and inputs in a single line */
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 1.1em;
+            color: #333;
+            margin-right: 15px;
+            flex: 1; /* Equal width for labels */
+            text-align: right;
+            white-space: nowrap; /* Prevents wrapping of labels */
+        }
+
+        .form-group input[type="number"],
+        .form-group select {
+            flex: 2; /* Equal width for inputs and dropdowns */
+            padding: 8px; /* Uniform thickness */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            height: 38px; /* Ensures consistent height */
+        }
+
+        .form-group input[type="number"]:focus,
+        .form-group select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Blue color for the "Clear" button */
+        button[type="submit"][name="action"][value="clear"] {
+            background-color: #1941b9 !important; /* Blue */
+            color: white !important; /* Ensure text color is white */
+        }
+
+        button[type="submit"][name="action"][value="clear"]:hover {
+            background-color: #2e26c5 !important; /* Darker blue on hover */
+        }
+
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        p.error {
+            color: #f44336;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        /* Button Container Style */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px; /* Adds space between the buttons */
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            width: 48%; /* Buttons take up half the space each */
+        }
+
+        @media (max-width: 768px) {
+            .form-group {
+                flex-direction: column; /* Stack label and input vertically on smaller screens */
+                align-items: stretch;
+            }
+
+            .form-group label {
+                text-align: left;
+                margin-bottom: 5px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            form {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .button-container button {
+                width: 100%; /* Buttons stack on smaller screens */
+            }
+        }
+    </style>
+<head>
+    <body>
+        <h1>💼💵Adult Income Prediction💼💵</h1>
+        <form id="predictionForm" method="POST" action="/predict">
+    
+            <!-- Numeric Inputs -->
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" value="{{ form_data['age'] }}" required><br><br>
+            
+            <label for="workclass">Workclass:</label>
+            <select id="workclass" name="workclass" required>
+                <option value="Private" {% if form_data['workclass'] == 'Private' %}selected{% endif %}>Private</option>
+                <option value="State-gov" {% if form_data['workclass'] == 'State-gov' %}selected{% endif %}>State-gov</option>
+                <option value="Federal-gov" {% if form_data['workclass'] == 'Federal-gov' %}selected{% endif %}>Federal-gov</option>
+                <option value="Self-emp-not-inc" {% if form_data['workclass'] == 'Self-emp-not-inc' %}selected{% endif %}>Self-emp-not-inc</option>
+                <option value="Self-emp-inc" {% if form_data['workclass'] == 'Self-emp-inc' %}selected{% endif %}>Self-emp-inc</option>
+                <option value="Local-gov" {% if form_data['workclass'] == 'Local-gov' %}selected{% endif %}>Local-gov</option>
+                <option value="Without-pay" {% if form_data['workclass'] == 'Without-pay' %}selected{% endif %}>Without-pay</option>
+                <option value="Never-worked" {% if form_data['workclass'] == 'Never-worked' %}selected{% endif %}>Never-worked</option>
+            </select><br><br>
+    
+            <label for="fnlwgt">FNLWGT (Final Weight):</label>
+            <input type="number" id="fnlwgt" name="fnlwgt" value="{{ form_data['fnlwgt'] }}" required><br><br>
+    
+            <label for="education">Education:</label>
+            <select id="education" name="education" required>
+                <option value="HS-grad" {% if form_data['education'] == 'HS-grad' %}selected{% endif %}>HS-grad</option>
+                <option value="Some-college" {% if form_data['education'] == 'Some-college' %}selected{% endif %}>Some-college</option>
+                <option value="7th-8th" {% if form_data['education'] == '7th-8th' %}selected{% endif %}>7th-8th</option>
+                <option value="10th" {% if form_data['education'] == '10th' %}selected{% endif %}>10th</option>
+                <option value="Doctorate" {% if form_data['education'] == 'Doctorate' %}selected{% endif %}>Doctorate</option>
+                <option value="Prof-school" {% if form_data['education'] == 'Prof-school' %}selected{% endif %}>Prof-school</option>
+                <option value="Bachelors" {% if form_data['education'] == 'Bachelors' %}selected{% endif %}>Bachelors</option>
+                <option value="Masters" {% if form_data['education'] == 'Masters' %}selected{% endif %}>Masters</option>
+                <option value="11th" {% if form_data['education'] == '11th' %}selected{% endif %}>11th</option>
+                <option value="Assoc-acdm" {% if form_data['education'] == 'Assoc-acdm' %}selected{% endif %}>Assoc-acdm</option>
+                <option value="Assoc-voc" {% if form_data['education'] == 'Assoc-voc' %}selected{% endif %}>Assoc-voc</option>
+                <option value="1st-4th" {% if form_data['education'] == '1st-4th' %}selected{% endif %}>1st-4th</option>
+                <option value="5th-6th" {% if form_data['education'] == '5th-6th' %}selected{% endif %}>5th-6th</option>
+                <option value="12th" {% if form_data['education'] == '12th' %}selected{% endif %}>12th</option>
+                <option value="9th" {% if form_data['education'] == '9th' %}selected{% endif %}>9th</option>
+                <option value="Preschool" {% if form_data['education'] == 'Preschool' %}selected{% endif %}>Preschool</option>
+            </select><br><br>
+    
+            <label for="education.num">Education Num:</label>
+            <input type="number" id="education.num" name="education.num" value="{{ form_data['education.num'] }}" min="1" max="16" required><br><br>
+    
+            <label for="marital.status">Marital Status:</label>
+            <select id="marital.status" name="marital.status" required>
+                <option value="Widowed" {% if form_data['marital.status'] == 'Widowed' %}selected{% endif %}>Widowed</option>
+                <option value="Divorced" {% if form_data['marital.status'] == 'Divorced' %}selected{% endif %}>Divorced</option>
+                <option value="Separated" {% if form_data['marital.status'] == 'Separated' %}selected{% endif %}>Separated</option>
+                <option value="Never-married" {% if form_data['marital.status'] == 'Never-married' %}selected{% endif %}>Never-married</option>
+                <option value="Married-civ-spouse" {% if form_data['marital.status'] == 'Married-civ-spouse' %}selected{% endif %}>Married-civ-spouse</option>
+                <option value="Married-spouse-absent" {% if form_data['marital.status'] == 'Married-spouse-absent' %}selected{% endif %}>Married-spouse-absent</option>
+                <option value="Married-AF-spouse" {% if form_data['marital.status'] == 'Married-AF-spouse' %}selected{% endif %}>Married-AF-spouse</option>
+            </select><br><br>
+
+
+            <label for="occupation">Occupation:</label>
+            <select id="occupation" name="occupation" required>
+                <option value="Exec-managerial" {{ 'selected' if form_data.get('occupation') == 'Exec-managerial' else '' }}>Exec-managerial</option>
+                <option value="Machine-op-inspct" {{ 'selected' if form_data.get('occupation') == 'Machine-op-inspct' else '' }}>Machine-op-inspct</option>
+                <option value="Prof-specialty" {{ 'selected' if form_data.get('occupation') == 'Prof-specialty' else '' }}>Prof-specialty</option>
+                <option value="Adm-clerical" {{ 'selected' if form_data.get('occupation') == 'Adm-clerical' else '' }}>Adm-clerical</option>
+                <option value="Craft-repair" {{ 'selected' if form_data.get('occupation') == 'Craft-repair' else '' }}>Craft-repair</option>
+                <option value="Transport-moving" {{ 'selected' if form_data.get('occupation') == 'Transport-moving' else '' }}>Transport-moving</option>
+                <option value="Handlers-cleaners" {{ 'selected' if form_data.get('occupation') == 'Handlers-cleaners' else '' }}>Handlers-cleaners</option>
+                <option value="Sales" {{ 'selected' if form_data.get('occupation') == 'Sales' else '' }}>Sales</option>
+                <option value="Farming-fishing" {{ 'selected' if form_data.get('occupation') == 'Farming-fishing' else '' }}>Farming-fishing</option>
+                <option value="Tech-support" {{ 'selected' if form_data.get('occupation') == 'Tech-support' else '' }}>Tech-support</option>
+                <option value="Protective-serv" {{ 'selected' if form_data.get('occupation') == 'Protective-serv' else '' }}>Protective-serv</option>
+                <option value="Armed-Forces" {{ 'selected' if form_data.get('occupation') == 'Armed-Forces' else '' }}>Armed-Forces</option>
+                <option value="Priv-house-serv" {{ 'selected' if form_data.get('occupation') == 'Priv-house-serv' else '' }}>Priv-house-serv</option>
+            </select><br><br>
+            
+            <label for="relationship">Relationship:</label>
+            <select id="relationship" name="relationship" required>
+                <option value="Not-in-family" {{ 'selected' if form_data.get('relationship') == 'Not-in-family' else '' }}>Not-in-family</option>
+                <option value="Unmarried" {{ 'selected' if form_data.get('relationship') == 'Unmarried' else '' }}>Unmarried</option>
+                <option value="Own-child" {{ 'selected' if form_data.get('relationship') == 'Own-child' else '' }}>Own-child</option>
+                <option value="Other-relative" {{ 'selected' if form_data.get('relationship') == 'Other-relative' else '' }}>Other-relative</option>
+                <option value="Husband" {{ 'selected' if form_data.get('relationship') == 'Husband' else '' }}>Husband</option>
+                <option value="Wife" {{ 'selected' if form_data.get('relationship') == 'Wife' else '' }}>Wife</option>
+            </select><br><br>
+            
+            <label for="race">Race:</label>
+            <select id="race" name="race" required>
+                <option value="White" {{ 'selected' if form_data.get('race') == 'White' else '' }}>White</option>
+                <option value="Black" {{ 'selected' if form_data.get('race') == 'Black' else '' }}>Black</option>
+                <option value="Asian-Pac-Islander" {{ 'selected' if form_data.get('race') == 'Asian-Pac-Islander' else '' }}>Asian-Pac-Islander</option>
+                <option value="Other" {{ 'selected' if form_data.get('race') == 'Other' else '' }}>Other</option>
+                <option value="Amer-Indian-Eskimo" {{ 'selected' if form_data.get('race') == 'Amer-Indian-Eskimo' else '' }}>Amer-Indian-Eskimo</option>
+            </select><br><br>
+            
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex" required>
+                <option value="Female" {{ 'selected' if form_data.get('sex') == 'Female' else '' }}>Female</option>
+                <option value="Male" {{ 'selected' if form_data.get('sex') == 'Male' else '' }}>Male</option>
+            </select><br><br>           
+
+            <label for="capital.gain">Capital Gain:</label>
+            <input type="number" id="capital.gain" name="capital.gain" required 
+                   value="{{ form_data.get('capital.gain', '') }}"><br><br>
+    
+            <label for="capital.loss">Capital Loss:</label>
+            <input type="number" id="capital.loss" name="capital.loss" required 
+                   value="{{ form_data.get('capital.loss', '') }}"><br><br>
+    
+            <label for="hours.per.week">Hours Per Week:</label>
+            <input type="number" id="hours.per.week" name="hours.per.week" required 
+                   value="{{ form_data.get('hours.per.week', '') }}"><br><br>
+
+            <label for="native.country">Native Country:</label>
+            <select id="native.country" name="native.country" required>
+                <option value="United-States" {{ 'selected' if form_data.get('native.country') == 'United-States' else '' }}>United-States</option>
+                <option value="Mexico" {{ 'selected' if form_data.get('native.country') == 'Mexico' else '' }}>Mexico</option>
+                <option value="Greece" {{ 'selected' if form_data.get('native.country') == 'Greece' else '' }}>Greece</option>
+                <option value="Vietnam" {{ 'selected' if form_data.get('native.country') == 'Vietnam' else '' }}>Vietnam</option>
+                <option value="China" {{ 'selected' if form_data.get('native.country') == 'China' else '' }}>China</option>
+                <option value="Taiwan" {{ 'selected' if form_data.get('native.country') == 'Taiwan' else '' }}>Taiwan</option>                      <option value="India" {{ 'selected' if form_data.get('native.country') == 'India' else '' }}>India</option>
+                <option value="Philippines" {{ 'selected' if form_data.get('native.country') == 'Philippines' else '' }}>Philippines</option>
+                <option value="Trinadad&Tobago" {{ 'selected' if form_data.get('native.country') == 'Trinadad&Tobago' else '' }}>Trinadad&Tobago</option>
+                <option value="Canada" {{ 'selected' if form_data.get('native.country') == 'Canada' else '' }}>Canada</option>
+                <option value="South" {{ 'selected' if form_data.get('native.country') == 'South' else '' }}>South</option>
+                <option value="Holand-Netherlands" {{ 'selected' if form_data.get('native.country') == 'Holand-Netherlands' else '' }}>Holand-Netherlands</option>
+                <option value="Puerto-Rico" {{ 'selected' if form_data.get('native.country') == 'Puerto-Rico' else '' }}>Puerto-Rico</option>
+                <option value="Poland" {{ 'selected' if form_data.get('native.country') == 'Poland' else '' }}>Poland</option>
+                <option value="Iran" {{ 'selected' if form_data.get('native.country') == 'Iran' else '' }}>Iran</option>
+                <option value="England" {{ 'selected' if form_data.get('native.country') == 'England' else '' }}>England</option>
+                <option value="Germany" {{ 'selected' if form_data.get('native.country') == 'Germany' else '' }}>Germany</option>
+                <option value="Italy" {{ 'selected' if form_data.get('native.country') == 'Italy' else '' }}>Italy</option>
+                <option value="Japan" {{ 'selected' if form_data.get('native.country') == 'Japan' else '' }}>Japan</option>
+                <option value="Hong" {{ 'selected' if form_data.get('native.country') == 'Hong' else '' }}>Hong</option>
+                <option value="Honduras" {{ 'selected' if form_data.get('native.country') == 'Honduras' else '' }}>Honduras</option>
+                <option value="Cuba" {{ 'selected' if form_data.get('native.country') == 'Cuba' else '' }}>Cuba</option>
+                <option value="Ireland" {{ 'selected' if form_data.get('native.country') == 'Ireland' else '' }}>Ireland</option>
+                <option value="Cambodia" {{ 'selected' if form_data.get('native.country') == 'Cambodia' else '' }}>Cambodia</option>
+                <option value="Peru" {{ 'selected' if form_data.get('native.country') == 'Peru' else '' }}>Peru</option>
+                <option value="Nicaragua" {{ 'selected' if form_data.get('native.country') == 'Nicaragua' else '' }}>Nicaragua</option>
+                <option value="Dominican-Republic" {{ 'selected' if form_data.get('native.country') == 'Dominican-Republic' else '' }}>Dominican-Republic</option>
+                <option value="Haiti" {{ 'selected' if form_data.get('native.country') == 'Haiti' else '' }}>Haiti</option>
+                <option value="El-Salvador" {{ 'selected' if form_data.get('native.country') == 'El-Salvador' else '' }}>El-Salvador</option>
+                <option value="Hungary" {{ 'selected' if form_data.get('native.country') == 'Hungary' else '' }}>Hungary</option>
+                <option value="Columbia" {{ 'selected' if form_data.get('native.country') == 'Columbia' else '' }}>Columbia</option>
+                <option value="Guatemala" {{ 'selected' if form_data.get('native.country') == 'Guatemala' else '' }}>Guatemala</option>
+                <option value="Jamaica" {{ 'selected' if form_data.get('native.country') == 'Jamaica' else '' }}>Jamaica</option>
+                <option value="Ecuador" {{ 'selected' if form_data.get('native.country') == 'Ecuador' else '' }}>Ecuador</option>
+                <option value="France" {{ 'selected' if form_data.get('native.country') == 'France' else '' }}>France</option>
+                <option value="Yugoslavia" {{ 'selected' if form_data.get('native.country') == 'Yugoslavia' else '' }}>Yugoslavia</option>
+                <option value="Scotland" {{ 'selected' if form_data.get('native.country') == 'Scotland' else '' }}>Scotland</option>
+                <option value="Portugal" {{ 'selected' if form_data.get('native.country') == 'Portugal' else '' }}>Portugal</option>
+                <option value="Laos" {{ 'selected' if form_data.get('native.country') == 'Laos' else '' }}>Laos</option>
+                <option value="Thailand" {{ 'selected' if form_data.get('native.country') == 'Thailand' else '' }}>Thailand</option>
+                <option value="Outlying-US(Guam-USVI-etc)" {{ 'selected' if form_data.get('native.country') == 'Outlying-US(Guam-USVI-etc)' else '' }}>Outlying-US(Guam-USVI-etc)</option>
+            </select><br><br> 
+
+            <div class="button-container">
+                <button type="submit" name="action" value="add">Add Prediction</button>
+                <button type="submit" name="action" value="clear">Clear</button> 
+            </div>
+</form>
+
+{% if prediction %}
+    <h2 id="predictionResult" style="color:rgb(234, 17, 125);">Prediction: {{ prediction }}</h2>
+{% endif %}
+{% if cleared %}
+    <p style="color: rgb(32, 110, 227);">Form has been cleared!</p>
+{% endif %}
+{% if error %}
+    <p class="error" style="color:rgb(217, 11, 11);">{{ error }}</p>
+{% endif %}
+
+
+<script>
+// JavaScript function to clear form fields and reset the prediction area
+function clearForm() {
+    // Clear frontend messages (prediction result and error message)
+    const predictionResult = document.querySelector("h2#predictionResult");
+    if (predictionResult) {
+        predictionResult.textContent = '';  // Clear the prediction result
+        predictionResult.style.color = "blue-message";  // Change the color to green after clearing
+    }
+
+    const errorMessage = document.querySelector("p.error");
+    if (errorMessage) {
+        errorMessage.textContent = '';  // Clear the error message
+    }
+
+    const clearMessage = document.querySelector("p#clearMessage");
+    if (clearMessage) {
+        clearMessage.textContent = "Form has been cleared!";  // Add the cleared message
+        clearMessage.style.color = "blue-message";  // Set the cleared message to green
+    }
+
+    // Reset form fields without clearing the prediction
+    const form = document.getElementById("predictionForm");
+    if (form) {
+        const formElements = form.elements;
+        for (let i = 0; i < formElements.length; i++) {
+            const element = formElements[i];
+            if (element.type === "text" || element.type === "textarea") {
+                element.value = '';  // Clear text input fields and textareas
+            } else if (element.type === "radio") {
+                element.checked = false;  // Uncheck radio buttons
+            } else if (element.type === "select-one" || element.type === "select-multiple") {
+                element.selectedIndex = 0;  // Reset dropdown to the first option
+            }
+        }
+    }
+}
+</script>
