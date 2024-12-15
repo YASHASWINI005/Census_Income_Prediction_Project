@@ -96,4 +96,17 @@ A Flask web application is developed with a user interface where users can input
 ### Notebook for Adult Income Prediction Model:
 Link : [NoteBook](Notebook.ipynb)
 
+---
+### TECH STACK
+| **Technology**            | **Purpose**                               |
+|---------------------------|-------------------------------------------|
+| **Flask**                  | Backend Framework                        |
+| **HTML**                   | Frontend Development (Website Structure) |
+| **CSS**                    | Styling the Website                      |
+| **JavaScript**             | Frontend Interactivity (optional)        |
+| **Python (pandas, openpyxl)** | Data Processing, Storing Predictions and Form Inputs in Excel |
+| **Pickle**                 | Model Serialization (logistic_reg.pkl)    |
+| **Postman**                | API Testing                              |
+| **OS Module**              | Handling file operations (e.g., loading model, reading/writing Excel) |
+
 
