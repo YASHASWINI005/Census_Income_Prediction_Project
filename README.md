@@ -96,30 +96,4 @@ A Flask web application is developed with a user interface where users can input
 ### Notebook for Adult Income Prediction Model:
 Link : [NoteBook](Notebook.ipynb)
 
----
-### Code Structure
-├── adult-income-prediction            # Root directory of the project.
-│   ├── __pycache__                    # Compiled Python files.
-│   ├── database                       # Database-related files.
-│   │   ├── __pycache__                # Compiled Python files for the database.
-│   │   ├── __init__.py                # Initialization for the database module.
-│   │   └── prediction.xlsx            # Excel file for storing predictions or data.
-│   ├── dataset                        # Dataset files.
-│   │   └── adult.csv                  # Dataset for adult income prediction.
-│   ├── myenv                          # Virtual environment (not tracked in Git, included in .gitignore).
-│   ├── screenshots                    # Screenshots of the website and UI.
-│   │   ├── screenshot(1)_postman.png  # Postman testing screenshot 1.
-│   │   ├── screenshot(2)_postman.png  # Postman testing screenshot 2.
-│   │   ├── screenshot(3)_ui_working.png # UI working screenshot 1.
-│   │   ├── screenshot(4)_ui_working.png # UI working screenshot 2.
-│   │   └── screenshot(5)_ui_working.png # UI working screenshot 3.
-│   ├── templates                      # HTML template files for the website.
-│   │   └── index.html                 # Main landing page of the website.
-│   ├── app.py                         # Code for API logic, handling requests, etc.
-│   ├── application.py                 # Main application code (backend logic, interaction with HTML, and database).
-│   ├── logistic_reg.pkl               # Saved trained Logistic Regression model.
-│   ├── model_in_notebook.ipynb        # Jupyter Notebook for model training and evaluation.
-│   ├── README.md                      # Project documentation and explanation.
-│   ├── requirements.txt               # List of required Python dependencies.
-│   ├── storage_predictions.py         # Script for handling storage of predictions, results, or data.
-│   └── .gitignore                     # Git ignore file to exclude files like myenv/.
+
