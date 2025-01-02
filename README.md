@@ -1,6 +1,7 @@
 # **INCOME Prediction** - YASHASWINI
 ### **Introduction About the Data**:
-Sure! Here's a description for the **Adult Income Prediction** dataset, focusing on predicting whether a person earns more than $50K per year based on several features:
+**Introduction: Adult Income Prediction Project**  
+The **Adult Income Prediction project** aims to predict whether an individual earns more or less than **$50,000** per year based on demographic and work-related attributes. This project provides insights into income distribution patterns and helps build predictive models using machine learning techniques. It also serves as a practical application for data preprocessing, feature engineering, and classification algorithms, making it a valuable learning experience in the field of data science.
 
 ---
 
