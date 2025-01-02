@@ -67,19 +67,12 @@ categorical variables are encoded using target encoding
 #### **Data Transformation**:
  In the Data Transformation phase, the data is processed using the following steps:
 
-#### **Target Encoding**:
-The categorical columns (workclass, education, marital.status, occupation, relationship, race, sex, native.country) are encoded using TargetEncoder, where the categories are replaced by the average target value for each category.
-SMOTE: Synthetic Minority Over-sampling Technique (SMOTE) is applied to handle class imbalance by generating synthetic samples.
-Standard Scaling: All numerical features are scaled using StandardScaler, ensuring that they have zero mean and unit variance.
-A pipeline is created with the following stages:
-
-- Target Encoding of categorical features
-
-- SMOTE for handling class imbalance
-
-- Standard Scaling of numerical features
-
-- Logistic Regression as the model
+- **Target Encoding**:
+Categorical columns such as workclass, education, marital.status, occupation, relationship, race, sex, and native.country are encoded using TargetEncoder. Each category is replaced by the average target value for that category.
+- **Class Imbalance Handling**:
+SMOTE (Synthetic Minority Over-sampling Technique) is applied to balance the class distribution by generating synthetic samples.
+- **Standard Scaling**:
+Numerical features are scaled using StandardScaler to normalize the data, ensuring zero mean and unit variance.
 
 #### **Model Training**:
 In the Model Training phase, the pipeline is fitted on the training data, where it applies encoding, scaling, and training the LogisticRegression model. The LogisticRegression model is set with C=0.5 and max_iter=500 to optimize the results. The model's performance is evaluated using the accuracy score on the test data.
